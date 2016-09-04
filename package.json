@@ -1,0 +1,48 @@
+{
+  "name": "ai-prototype1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp live"
+  },
+  "author": "Gleb Denisov",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^4.1.8",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "glslify": "^5.0.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^1.1.1",
+    "gulp-if": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-server-livereload": "^1.7.0",
+    "gulp-util": "^3.0.7",
+    "node-bourbon": "^4.2.3",
+    "run-sequence": "^1.1.5",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "a-big-triangle": "^1.0.2",
+    "gl-fbo": "^2.0.5",
+    "gl-now": "^1.4.0",
+    "gl-shader": "^4.2.0",
+    "gl-texture2d": "^2.0.11",
+    "glsl-hsv2rgb": "^1.0.0",
+    "glsl-map": "^1.0.1",
+    "glslify": "^5.1.0",
+    "midi": "^0.9.5",
+    "ndarray": "^1.0.18",
+    "ndarray-fill": "^1.0.1",
+    "osc-receiver": "^1.1.3",
+    "web-midi": "^2.0.1"
+  }
+}
