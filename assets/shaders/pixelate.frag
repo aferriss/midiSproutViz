@@ -36,7 +36,7 @@ vec3 hsv2rgb(vec3 c)
 void main(){
 	// vec3 col = hsv2rgb(vec3(note, 1.0 - note, cc));
 	// float pixelSize = (cc, 0.0,1.0,4.0,124.0);
-	vec2 tc = gl_FragCoord.xy;// / resolution;
+	vec2 tc = vUv;// / resolution;
 	vec2 tc1 = tc;
 	vec2 tc2 = tc;
 	tc1.x = clamp(tc.x, cut, resolution.x / 2.0);
@@ -58,7 +58,7 @@ void main(){
 	// finalTc = finalTc + vec2(0.0,sin(time + finalTc.y*cc)*0.15);
 	// tc = floor(tc *  cc) /  cc;
 	vec2 modCoord = finalTc ;//+ vec2(0.0,sin(time + finalTc.x*cc)*0.15);
-	vec4 tex = texture2D(tex0, vec2(modCoord));
+	vec4 tex = texture2D(tex0, modCoord);// + vec2(sin(modCoord.y*10.0 + time)*10.25, 0.0));
 
 	vec3 hsb = rgb2hsv(tex.rgb);
 	hsb.r += note;

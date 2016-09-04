@@ -108,6 +108,9 @@ shell.on('gl-init', function(){
 	reposFbo.color[0].magFilter = gl.LINEAR;
 	reposFbo.color[0].minFilter = gl.LINEAR;
 
+	sinFbo.color[0].magFilter = gl.LINEAR;
+	sinFbo.color[0].minFilter = gl.LINEAR;
+
 	var initial_conditions = ndarray(new Uint8Array(shell.width*shell.height*4), [shell.width, shell.height, 4])
   fill(initial_conditions, function(x,y,c) {
     if(c === 3) {
@@ -116,6 +119,7 @@ shell.on('gl-init', function(){
     return Math.floor(Math.random()*255);
   });
   console.log(initial_conditions);
+  sinFbo.color[0].setPixels(initial_conditions)
   baseFbo.color[0].setPixels(initial_conditions)
 });
 
@@ -127,7 +131,7 @@ shell.on('tick', function(){
 		reposShader.uniforms.tex0 = baseFbo.color[0].bind(0); 
 		reposShader.uniforms.tex1 = sinFbo.color[0].bind(1);
 		reposShader.uniforms.amt = [10.0/ shell.width,10.0 / shell.height];
-		reposShader.uniforms.note = cc.map(0,127,0.985,1.005);
+		reposShader.uniforms.note = cc.map(0,127,0.985,1.01);
 		reposShader.uniforms.note2 = note.map(0,127,0.00001,0.01);
 		reposShader.uniforms.cc = cc;
 		drawScreen(gl);
@@ -146,7 +150,7 @@ shell.on('tick', function(){
 		pixelateShader.uniforms.note = note.map(0,127,0,1);
 		pixelateShader.uniforms.cc = cc.map(0,127,50.0,5.0);
 		pixelateShader.uniforms.time = time*0.01;
-		pixelateShader.uniforms.cut = cc.map(0,127,0,shell.width);
+		pixelateShader.uniforms.cut = cc.map(0,127,0,1);
 			drawScreen(gl);
 		time++;
 });
@@ -163,7 +167,7 @@ shell.on('gl-render', function(){
 		sinShader.uniforms.resolution = [shell.width, shell.height];
 		sinShader.uniforms.cut = cc.map(0,127,1,10);
 		sinShader.uniforms.spin = cc.map(0,127,1.5,0.0);
-		sinShader.uniforms.time = time*0.01;
+		sinShader.uniforms.time = time*0.001;
 		drawScreen(gl);
 	// reposShader.bind();
 	// reposShader.uniforms.tex0 = baseFbo.color[0].bind(); 
